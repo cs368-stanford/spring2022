@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on CS 368</title>
-    <link>http://web.stanford.edu/class/cs368/categories.html</link>
+    <link>https://cs368-stanford.github.io/spring2022/categories.html</link>
     <description>Recent content in Categories on CS 368</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://web.stanford.edu/class/cs368/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://cs368-stanford.github.io/spring2022/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

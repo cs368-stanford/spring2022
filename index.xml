@@ -2,65 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CS 368</title>
-    <link>http://web.stanford.edu/class/cs368/</link>
+    <link>https://cs368-stanford.github.io/spring2022/</link>
     <description>Recent content on CS 368</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://web.stanford.edu/class/cs368/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://cs368-stanford.github.io/spring2022/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Assignments</title>
-      <link>http://web.stanford.edu/class/cs368/assignments.html</link>
+      <link>https://cs368-stanford.github.io/spring2022/assignments.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://web.stanford.edu/class/cs368/assignments.html</guid>
+      <guid>https://cs368-stanford.github.io/spring2022/assignments.html</guid>
       <description>Gradescope (Code: MK7NNR) Due April 26th, 11:59 PM: Written Assignment 1 Due June 10th, 11:59 PM: Programming Assignment 1 (Code, Instructions) Due May 10th, 11:59 PM: Written Assignment 2 Due June 10th, 11:59 PM: Programming Assignment 2 (Code, Instructions) Due May 22nd, 11:59PM: Project checkpoint (see gradescope) Due May 24th, 11:59 PM: Written Assignment 3 Due June 10th, 11:59 PM: Programming Assignment 3 (Code, Instructions) Due June 10th, 11:59 PM: Final Project Write-up (see here for details)  For the programming assignments, we will be accepting submissions throughout the entire quarter.</description>
     </item>
     
     <item>
       <title>Lecture Schedule</title>
-      <link>http://web.stanford.edu/class/cs368/lectures.html</link>
+      <link>https://cs368-stanford.github.io/spring2022/lectures.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://web.stanford.edu/class/cs368/lectures.html</guid>
+      <guid>https://cs368-stanford.github.io/spring2022/lectures.html</guid>
       <description>Much of the material is covered in lecture notes for a previous offering of the course, numbered CS 369G. I will be updating some of these notes as we go along.
-In addition, the handwritten notes from class can be found at tinyurl.com/cs368notes.
-    Date Topic Notes    4/7 Counting distinct elements  Lecture notes Probabilistic counting algorithms for data base applications, P. Flajolet, GN Martin, JCSS, 1985.</description>
+In addition, the handwritten notes from the Spring 2020 class can be found at tinyurl.com/cs368notes.
+    Date Topic Notes    3/28 Counting distinct elements - Lecture notes - Probabilistic counting algorithms for data base applications, P.</description>
     </item>
     
     <item>
       <title>Logistics</title>
-      <link>http://web.stanford.edu/class/cs368/logistics.html</link>
+      <link>https://cs368-stanford.github.io/spring2022/logistics.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://web.stanford.edu/class/cs368/logistics.html</guid>
+      <guid>https://cs368-stanford.github.io/spring2022/logistics.html</guid>
       <description> Instructor: Moses Charikar, OH Fri 11:00-noon (access via Canvas) Lecture hours: Tue-Thu 10:30-11:50 Live lectures: https://canvas.stanford.edu/courses/115907 Teaching Assistant: Paul Liu, OH Wed 4-6pm Zoom Link Grading: 3 homeworks (60%), project (35%), piazza participation (5%) Prerequisites: Strong background in algorithms and probability   </description>
     </item>
     
     <item>
       <title>PAssignment 1: F0 and F2 estimation</title>
-      <link>http://web.stanford.edu/class/cs368/programming/prog-1.html</link>
+      <link>https://cs368-stanford.github.io/spring2022/programming/prog-1.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://web.stanford.edu/class/cs368/programming/prog-1.html</guid>
+      <guid>https://cs368-stanford.github.io/spring2022/programming/prog-1.html</guid>
       <description>Getting started  In this assignment you will implement some of the F0 and F2 estimators we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. You are also allowed up to 62 submissions (that&amp;rsquo;s 1 per day from the time of release until June 11).
 To make things more fun, we are also running a public scoreboard!</description>
     </item>
     
     <item>
       <title>PAssignment 2: Heavy-hitters and adversarial streams</title>
-      <link>http://web.stanford.edu/class/cs368/programming/prog-2.html</link>
+      <link>https://cs368-stanford.github.io/spring2022/programming/prog-2.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://web.stanford.edu/class/cs368/programming/prog-2.html</guid>
+      <guid>https://cs368-stanford.github.io/spring2022/programming/prog-2.html</guid>
       <description>Getting started  In this assignment you will implement the CountSketch and CountMin algorithm we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1, You are allowed up to 62 submissions.
 To make things more fun, we are also running a public scoreboard! The scoreboard will rank by the amount of memory you use in your solutions (you can be anonymous in this scoreboard).</description>
     </item>
     
     <item>
       <title>PAssignment 3: A (2&#43;ϵ)-approximation for maximum weight matching in the semi-streaming model</title>
-      <link>http://web.stanford.edu/class/cs368/programming/prog-3.html</link>
+      <link>https://cs368-stanford.github.io/spring2022/programming/prog-3.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://web.stanford.edu/class/cs368/programming/prog-3.html</guid>
+      <guid>https://cs368-stanford.github.io/spring2022/programming/prog-3.html</guid>
       <description>Getting started  In this assignment you will implement the a recent advancement in the semi-streaming model for computing a maximum weight matching. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1 and 2, you are allowed up to 62 submissions and there will be a public scoreboard!
 The starter template is here and the setup process is the same as the previous assignments (here and here).</description>
     </item>
