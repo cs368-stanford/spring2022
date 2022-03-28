@@ -1,0 +1,109 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.95.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PAssignment 3: A (2&#43;ϵ)-approximation for maximum weight matching in the semi-streaming model &middot; CS 368</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+	<body class="theme-base-08 ">
+		<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://web.stanford.edu/class/cs368/"><h1>CS 368</h1></a>
+      <p class="lead">
+       Algorithmic Techniques for Big Data 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://web.stanford.edu/class/cs368/">Home</a> </li>
+        <li><a href="/class/cs368/assignments.html"> Assignments </a></li><li><a href="/class/cs368/lectures.html"> Lecture Schedule </a></li><li><a href="/class/cs368/logistics.html"> Logistics </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2022. All rights reserved. </p>
+  </div>
+</aside>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>PAssignment 3: A (2&#43;ϵ)-approximation for maximum weight matching in the semi-streaming model</h1>
+                
+			      <h2 id="getting-started">Getting started</h2>
+<hr>
+<p>In this assignment you will implement the a recent advancement in the semi-streaming model for computing a maximum weight matching. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1 and 2, you are allowed up to 62 submissions and there will be a public scoreboard!</p>
+<p>The starter template is <a href="/programming/prog-3.zip">here</a> and the setup process is the same as the previous assignments (<a href="/class/cs368/programming/prog-1.html">here</a> and <a href="/class/cs368/programming/prog-2.html">here</a>).</p>
+<p>After you install these packages, verify that you can run the <code>stream.py</code> python file. You should see the output (some of the numbers may be different):</p>
+<pre tabindex="0"><code>Memory units (greedy): 5062
+Matching value: 5866.0
+</code></pre><h2 id="background">Background</h2>
+<p>A maximum matching on a graph <code>G = (V, E)</code> is a set of non-adjacent edges which maximize the sum of their weights (a more precise definition can be found <a href="https://en.wikipedia.org/wiki/Maximum_weight_matching">here</a>).</p>
+<p>Since the introduction of the semi-streaming model in 2005, the problem of computing a 2-approximation to the maximum weight matching has been actively studied. In the offline (normal) model of computing, one can just sort the weights from largest weight down and add edges greedily to the matching to obtain a 2-approximation. Unfortunately this sorting step is not possible in the streaming model.</p>
+<p>Numerous attempts were made at the problem: a 5.828-approximation (McGregor) in &lsquo;05, a 5.585-approximation and then a 4.911-approximation (Zelke, and then Epstein) in &lsquo;12, a 4-approximation in &lsquo;14, and then a 3.5-approximation in &lsquo;16 (Grigorescu). Finally, in 2017 a 2-approximation was shown by Paz and Schwartzman, winning them the Best Student Paper and Best Paper award at SODA.</p>
+<p>The algorithm is ~10 lines long, and the approach you will be following is a simplified version by Ghaffari and Wajc here: <a href="https://arxiv.org/pdf/1701.03730.pdf">https://arxiv.org/pdf/1701.03730.pdf</a>.</p>
+<p>The basic algorithm uses a technique from the &rsquo;80s called &ldquo;local ratio&rdquo;. The algorithm itself is simple to state:</p>
+<pre tabindex="0"><code>Repeatedly select an edge e with positive weight; reduce its weight from itself and its neighboring edges; push e into a stack and continue to the next edge, so long as edges with positive weight remain. At the end; pop edges off stack and add the edges greedily to the matching.
+</code></pre><h2 id="implementing-the-assignment">Implementing the assignment</h2>
+<hr>
+<p>To complete the assignment, you will have to fill out the implementations of <code>wm_streamer</code>, <code>wm_improved_streamer</code> in <code>stream.py</code>. No other files need to be modified. Also, <strong>please do not change any of the file names</strong>.</p>
+<p>You will have to implement both the original algorithm of Paz and Schwartzman, as well as the improved algorithm of Mohsen and Wacj. The original algorithm should be implemented in the <code>wm_streamer</code> function, and can be found in Algorithm 1 of the linked paper (see <a href="#background">Background</a>). The improved algorithm should be implemented in <code>wm_improved_streamer</code>, and can be found in Algorithm 2 of the linked paper. The two algorithms only differ by 5 lines, so it should be straight-forward to implement the second algorithm once you get the first one working.</p>
+<h3 id="using-cs368lib">Using <code>cs368lib</code></h3>
+<p>As in previous assignments, your algorithms must be extremely memory efficient. To track the amount of memory your program is using, you <strong>must</strong> use the functions provided to you in <code>cs368lib.py</code>. <code>cs368lib.py</code> must not be modified.</p>
+<p>For this particular assignment, <code>cs368lib.py</code> has been updated with additional functionality. The <code>tracked_list</code> class now tracks memory used for lists of lists correctly. This will be necessary to implement a per-vertex queue for the improved algorithm. Note that the <code>tracked_list</code> can be used as both a queue and a stack via the <code>pop</code> method.</p>
+<h3 id="food-for-thought">Food for thought</h3>
+<p>Here are some questions to think about (which you do not have to submit):</p>
+<ul>
+<li>Is the improved algorithm actually better than the original algorithm? What do you see in your local experiments when you compare the two algorithms?</li>
+<li>Are there simple distributions of weights for which better approximation guarantees can be shown?</li>
+<li>Along the same lines, are there more efficient algorithms for different distributions?</li>
+</ul>
+<h2 id="submissions-grading-and-scoreboard">Submissions, Grading, and ⚝Scoreboard⚝</h2>
+<hr>
+<h3 id="scoreboard-names">Scoreboard names</h3>
+<p>When you submit to gradescope, please only upload <code>stream.py</code>. Upon submission, you will get a prompt for filling out your scoreboard name. Feel free to choose any name you wish.</p>
+<h3 id="time-limits">Time limits</h3>
+<p>The judge will run your estimators on a variety of input distributions under a some-what tight time limit. This means that the time complexity of your solution is important as well. Each test case will get 1-10 seconds of run time. If you timeout on a test case, no credit is given for that test case.</p>
+<h3 id="memory-limits">Memory limits</h3>
+<p>The grader also grades you based on the amount of memory you use. If your submission uses too much memory on a test case, no credit is given. The accepted level of memory is <code>min(len(stream), 8*n*log(1/eps)/eps)</code>. You are encouraged to optimize your solution to use even less memory.</p>
+<h3 id="accepted-level-of-error">Accepted level of error</h3>
+<p>If your solution does not return something within an additive <code>eps F1</code> error of the exact solution, no credit is given.</p>
+<p>Lastly, <strong>please do not submit excessively</strong>. Each submission takes a few minutes to judge and we only have 1 machine. Instead, test things locally when possible.</p>
+<h2 id="final-words">Final words</h2>
+<hr>
+<ul>
+<li>Start early! Please do not leave the programming assignments to the last minute.</li>
+<li>For testing your solution, it may help to write random input generators and test locally. To help you test, the default implementation of the estimators returns the exact solution.</li>
+<li>This is the first year we&rsquo;re piloting a programming assignment. If you have suggestions for new problems or improvements to current problems, let me know!</li>
+</ul>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

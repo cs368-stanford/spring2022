@@ -1,0 +1,107 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.95.0" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PAssignment 2: Heavy-hitters and adversarial streams &middot; CS 368</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://web.stanford.edu/class/cs368/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+	<body class="theme-base-08 ">
+		<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://web.stanford.edu/class/cs368/"><h1>CS 368</h1></a>
+      <p class="lead">
+       Algorithmic Techniques for Big Data 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://web.stanford.edu/class/cs368/">Home</a> </li>
+        <li><a href="/class/cs368/assignments.html"> Assignments </a></li><li><a href="/class/cs368/lectures.html"> Lecture Schedule </a></li><li><a href="/class/cs368/logistics.html"> Logistics </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2022. All rights reserved. </p>
+  </div>
+</aside>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>PAssignment 2: Heavy-hitters and adversarial streams</h1>
+                
+			      <h2 id="getting-started">Getting started</h2>
+<hr>
+<p>In this assignment you will implement the CountSketch and CountMin algorithm we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1, <strong>You are allowed up to 62 submissions.</strong></p>
+<p>To make things more fun, we are also running a public scoreboard! The scoreboard will rank by the amount of memory you use in your solutions (you can be anonymous in this scoreboard). The top teams on the scoreboard will receive bonus credit at the end of the quarter. At this time we are still deciding on the criteria for &ldquo;top&rdquo; teams and the amount of bonus credit.</p>
+<p>The starter template is <a href="/programming/prog-2.zip">here</a>. To set up the coding environment, you&rsquo;ll need to install <a href="https://www.python.org/download/releases/2.7/">python 2.7</a> along with packages <code>mmh3</code>, <code>numpy</code>, and <code>sortedcontainers</code>. With python installed, you can install these packages with the command (executed in <code>bash</code> for Linux and <code>cmd</code> for Windows):</p>
+<p><code>python -m pip install mmh3 numpy sortedcontainers</code></p>
+<p>After you install these packages, verify that you can run the <code>stream.py</code> python file. You should see the output (some of the numbers may be different):</p>
+<pre tabindex="0"><code>Memory units (exact): 10000
+[0, 12, 11, 12, 10, 9, 9, 7, 5, 11]
+</code></pre><h2 id="implementing-the-assignment">Implementing the assignment</h2>
+<hr>
+<p>To complete the assignment, you will have to fill out the implementations of <code>CMSketcher</code>, <code>CSSketcher</code>, <code>generate_cs_adversarial</code>, and <code>generate_cm_adversarial</code> in <code>stream.py</code>. No other files need to be modified. Also, <strong>please do not change any of the file names</strong>.</p>
+<p>In Part I, you&rsquo;ll implement the CountSketch and CountMin algorithms outlined in class. These algorithms takes in a stream of numbers and their frequencies <code>(x_i, f_i)</code> and reports back for each unique number an estimate of their true frequency in the stream. To implement these algorithms, you&rsquo;ll have to implement the <code>build</code> and <code>query</code> methods of the <code>CSSketcher</code> and <code>CMSketcher</code> classes. The <code>build</code> method builds the sketch from a given stream as well as an error tolerance <code>eps</code>. The <code>query</code> method gets an <code>x_i</code> of the stream as input and returns a frequency estimate. The frequency estimate is judged as correct if it is within additive error <code>eps * F1</code>.</p>
+<p>In Part II, you&rsquo;ll investigate the trade-off between CountSketch and CountMin. You are asked to implement two functions <code>generate_cs_adversarial</code> and <code>generate_cm_adversarial</code>. These two functions must produces two streams. Each stream must have at least 10000 distinct elements. In the first stream, the frequencies of the elements must be chosen so that CountSketch uses more memory than CountMin. In the second stream, the frequencies must be chosen so that CountMin uses more memory than CountSketch.</p>
+<p>To compute the memory your sketches use, we provide a <code>compute_best_memory</code> function. This function takes in a <code>stream</code>, a <code>sketch</code>, and an <code>eps</code>. It then rebuilds the sketch many times with various memory limits to find the smallest amount of memory that can produce the given <code>eps</code> for the given <code>stream</code> and <code>sketch</code>. The function <code>test_adversarial</code> shows you an example of how to use <code>compute_best_memory</code>.</p>
+<p>Part II will be graded manually (at the end of the quarter) once you submit to GradeScope. You will receive full marks as long as <code>test_adversarial</code> produces the correct output locally. This part is only graded manually because the <code>compute_best_memory</code> function takes quite a long time to run, and may clog up the online judge.</p>
+<h3 id="using-cs368lib">Using <code>cs368lib</code></h3>
+<p>Since we are working in the streaming model, your algorithms must be extremely memory efficient. To track the amount of memory your program is using, you <strong>must</strong> use the functions provided to you in <code>cs368lib.py</code>. <code>cs368lib.py</code> must not be modified. The <code>cs368lib</code> file provides to you the following functions/classes that you may find useful:</p>
+<ul>
+<li><code>class tracked_sortedlist</code>: A dynamic list that retains sorted order. Any operations on this list run in logarithmic time. Any python list operations (such as indexing, iteration, or slicing) will work on this list.</li>
+<li><code>class tracked_list</code>: A normal dynamic list. Appending or popping from the end is constant time. Any python list operations (such as indexing, iteration, or slicing) will work on this list.</li>
+<li><code>tracked_int</code> and <code>tracked_double</code>: Use these functions when you want to create an integer or a double variable.</li>
+<li><code>hash</code> and <code>hash_double</code>: These functions take in an integer <code>elem</code> and an integer <code>seed</code>. <code>hash</code> will map the integer <code>elem</code> to a random 64-bit integer. <code>hash_double</code> will map the integer to a random value in [0, 1]. To get different hash functions, use different <code>seed</code> values.</li>
+</ul>
+<p>Any memory you use must be tracked using <code>cs368lib</code>. Failure to do so will result in penalization.</p>
+<h2 id="submissions-grading-and-scoreboard">Submissions, Grading, and ⚝Scoreboard⚝</h2>
+<hr>
+<h3 id="scoreboard-names">Scoreboard names</h3>
+<p>When you submit to gradescope, please only upload <code>stream.py</code>. Upon submission, you will get a prompt for filling out your scoreboard name. Feel free to choose any name you wish.</p>
+<h3 id="time-limits">Time limits</h3>
+<p>The judge will run your estimators on a variety of input distributions under a some-what tight time limit. This means that the time complexity of your solution is important as well. Each test case will get 1-10 seconds of run time. If you timeout on a test case, no credit is given for that test case.</p>
+<h3 id="memory-limits">Memory limits</h3>
+<p>The grader also grades you based on the amount of memory you use. If your submission uses too much memory on a test case, no credit is given. The accepted level of memory is <code>30/eps^2</code> (since the memory of the hash functions is not counted). You are encouraged to optimize your solution to use even less memory.</p>
+<h3 id="accepted-level-of-error">Accepted level of error</h3>
+<p>If your solution does not return something within an additive <code>eps F1</code> error of the exact solution, no credit is given.</p>
+<p>Lastly, <strong>please do not submit excessively</strong>. Each submission takes a few minutes to judge and we only have 1 machine. Instead, test things locally when possible.</p>
+<h2 id="final-words">Final words</h2>
+<hr>
+<ul>
+<li>Start early! Please do not leave the programming assignments to the last minute.</li>
+<li>For testing your solution, it may help to write random input generators and test locally. To help you test, the default implementation of the estimators returns the exact solution.</li>
+<li>Always keep in mind the time complexity of your solution. It must run fast enough to process a stream of size 100k in less than 10 seconds.</li>
+<li>This is the first year we&rsquo;re piloting a programming assignment. If you have suggestions for new problems or improvements to current problems, let me know!</li>
+</ul>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
