@@ -55,15 +55,14 @@
                 
 			      <h2 id="getting-started">Getting started</h2>
 <hr>
-<p>In this assignment you will implement some of the F0 and F2 estimators we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. <strong>You are also allowed up to 62 submissions (that&rsquo;s 1 per day from the time of release until June 11).</strong></p>
+<p>In this assignment you will implement some of the F0 and F2 estimators we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. <strong>You are also allowed up to 44 submissions (that&rsquo;s 1 per day from the time of release until June 1).</strong></p>
 <p>To make things more fun, we are also running a public scoreboard! The scoreboard will rank by the amount of memory you use in your solutions (you can be anonymous in this scoreboard). The top teams on the scoreboard will receive bonus credit at the end of the quarter. At this time we are still deciding on the criteria for &ldquo;top&rdquo; teams and the amount of bonus credit.</p>
 <p>The starter template is <a href="/programming/prog-1.zip">here</a>. To set up the coding environment, you&rsquo;ll need to install <a href="https://www.python.org/download/releases/2.7/">python 2.7</a> along with packages <code>mmh3</code>, <code>numpy</code>, and <code>sortedcontainers</code>. With python installed, you can install these packages with the command (executed in <code>bash</code> for Linux and <code>cmd</code> for Windows):</p>
 <p><code>python -m pip install mmh3 numpy sortedcontainers</code></p>
 <p>After you install these packages, verify that you can run the <code>stream.py</code> python file. You should see the output (some of the numbers may be different):</p>
 <pre tabindex="0"><code>F0 estimate: 1234
-Total memory units used: 10002
-F2 estimate: 90784
-Total memory units used: 10003
+F2 estimate: 91088
+Total memory units used: 30005
 </code></pre><h2 id="implementing-the-assignment">Implementing the assignment</h2>
 <hr>
 <p>To complete the assignment, you will have to fill out the implementations of <code>f0_estimator</code> and <code>f2_estimator</code> in <code>stream.py</code>. No other files need to be modified. Also, <strong>please do not change any of the file names</strong>.</p>
@@ -94,7 +93,7 @@ Total memory units used: 10003
 <li>Start early! Please do not leave the programming assignments to the last minute.</li>
 <li>For testing your solution, it may help to write random input generators and test locally. To help you test, the default implementation of the estimators returns the exact solution.</li>
 <li>Always keep in mind the time complexity of your solution. It must run fast enough to process 10-million integers in less than 10 seconds.</li>
-<li>This is the first year we&rsquo;re piloting a programming assignment. If you have suggestions for new problems or improvements to current problems, let me know!</li>
+<li>If you have suggestions for new problems or improvements to current problems, let us know!</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
 <hr>
