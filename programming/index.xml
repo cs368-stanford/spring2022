@@ -22,7 +22,7 @@ To make things more fun, we are also running a public scoreboard!</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs368-stanford.github.io/spring2022/programming/prog-2.html</guid>
-      <description>Getting started  In this assignment you will implement the CountSketch and CountMin algorithm we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1, You are allowed up to 62 submissions.
+      <description>Getting started  In this assignment you will implement the CountSketch and CountMin algorithm we covered in class. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1, You are allowed up to 44 submissions.
 To make things more fun, we are also running a public scoreboard! The scoreboard will rank by the amount of memory you use in your solutions (you can be anonymous in this scoreboard).</description>
     </item>
     
