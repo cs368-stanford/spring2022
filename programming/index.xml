@@ -32,7 +32,7 @@ To make things more fun, we are also running a public scoreboard! The scoreboard
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs368-stanford.github.io/spring2022/programming/prog-3.html</guid>
-      <description>Getting started  In this assignment you will implement the a recent advancement in the semi-streaming model for computing a maximum weight matching. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1 and 2, you are allowed up to 62 submissions and there will be a public scoreboard!
+      <description>Getting started  In this assignment you will implement a recent advancement in the semi-streaming model for computing a maximum weight matching. The assignment will be autograded on gradescope, and you will be able to see your grades after you submit. As in Programming Assignment 1 and 2, you are allowed up to 44 submissions and there will be a public scoreboard!
 The starter template is here and the setup process is the same as the previous assignments (here and here).</description>
     </item>
     
